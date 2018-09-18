@@ -41,7 +41,8 @@ class DataSource
     item for item in @select_parser.select_to_array() when item.group
 
   search: (chosen, response_cb) ->
-    filter_scope = if not chosen.results_data?
+    filter_scope = if chosen.results_data? || not chosen.results_data?
+      console.log("if not chosen.results_data?")
       # Run through list to mark which scopes each group is in
       # The aim is to place the groups in the same position
       for item in this.items_as_array()
@@ -70,6 +71,7 @@ class DataSource
 
       scope
     else
+      console.log("search - else")
       scopes = chosen.get_search_request().scopes
       if scopes.length
         scopes[scopes.length - 1]

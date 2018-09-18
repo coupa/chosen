@@ -27,6 +27,8 @@ class SelectParser
         item = this.option_to_item option, group_disabled
         item.array_index = @parsed.length
         item.options_index = @options_index
+        console.log(option)
+
         item.disabled = group_disabled if group_disabled is true
         item.group_array_index = group_position
         

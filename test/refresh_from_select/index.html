@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="UTF-8">
+  <title>Chosen test: refresh from select options</title>
+  <link rel="stylesheet" type="text/css" href="../../public/chosen.css">
+  <style>
+    body{
+      font-family: Helvetica, Arial, sans-serif;
+      margin: 10vh 10vw;
+    }
+  </style>
+  <script src="https://unpkg.com/jquery@1.11.0/dist/jquery.js"></script>
+  <script src="../../public/chosen.jquery.js"></script>
+</head>
+<body>
+  <select id="select">
+    <option>option 1</option>
+    <option>option 2</option>
+    <option>option 3</option>
+    <option>option</option>
+    <option id="option-to-disable">option to disable</option>
+  </select>
+
+  <script>
+    console.log($("#option-to-disable").attr("disabled"));
+    $("#select").chosen().change(function(){
+      $("#option-to-disable").attr("disabled", true);
+      console.log($("#option-to-disable").attr("disabled"));
+      $("#select").trigger("chosen:updated")
+    });
+  </script>
+</body>
+</html>
