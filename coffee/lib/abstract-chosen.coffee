@@ -115,6 +115,7 @@ class AbstractChosen
     this.outerHTML(group_el)
 
   results_update_field: ->
+    this.source.select_parser.parsed = null
     this.set_default_text()
     this.results_reset_cleanup() if not @is_multiple
     this.result_clear_highlight()
