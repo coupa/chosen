@@ -80,8 +80,6 @@ class Chosen extends AbstractChosen
       @search_container = @container.find('li.search-field').first()
       @search_scroller = @container.find('ul.chosen-scopes')
       @selected_item = @container.find('.chosen-single').first()
-      if @search_field
-        @set_label_attributes()
     
     this.set_tab_index()
     this.set_label_behavior()
@@ -742,21 +740,6 @@ class Chosen extends AbstractChosen
 
     return input_field.val(value) if value?
     input_field.val()
-
-  set_label_attributes: () ->
-    if $(@container).attr('id')
-      associated_select_field = $('select[id="' + $(@container).attr('id').replace('_chosen', '') + '"]')
-      if aria_describedby = associated_select_field.attr('aria-describedby')
-        @search_field.attr 'aria-describedby', aria_describedby
-
-      if aria_labelledby = associated_select_field.attr('aria-labelledby')
-        @search_field.attr 'aria-labelledby', aria_labelledby
-      else if aria_label = associated_select_field.attr('aria-label')
-        @search_field.attr 'aria-label', aria_label
-      else if aria_label = $('label[for="' + associated_select_field.attr('id') + '"]')
-        @search_field.attr 'aria-label', aria_label.text()
-    else if label = $(@container).prevAll('label').first().text()
-      @search_field.attr('aria-label', label)
 
 tabCallback = (container) ->
   tabbable_element = null
