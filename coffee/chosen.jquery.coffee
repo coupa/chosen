@@ -644,7 +644,12 @@ class Chosen extends AbstractChosen
         [ val ]
 
     if val?
-      (@source.get_item_by_value(v) for v in val)
+      for v in val
+        item_by_val = @source.get_item_by_value(v)
+        if (item_by_val != undefined)
+          item_by_val
+        else
+
     else
       []
 
